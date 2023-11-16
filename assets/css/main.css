@@ -9,7 +9,7 @@
 html {
   color: #232333;
   font-family: 'Roboto Mono', monospace;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.6em;
 }
 body{
@@ -157,7 +157,7 @@ h5::before { color: var(--maincolor); content: '##### '; }
 h6::before { color: var(--maincolor); content: '###### '; }
 
 .meta {
-  color: #999;
+  color: #666;
   letter-spacing: -0.5px;
 }
 
