@@ -204,7 +204,7 @@ time {
 
 /* Posts */
 article .title {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 
@@ -238,15 +238,18 @@ nav .tags{
 }
 nav .tags::before{
   content: "🏷  ";
-  font-size: 28px;
+  font-size: 24px;
   margin-right: 1.5em;
+}
+.tags ul li{
+  margin-left: 0.5em;
 }
 .tags ul li::before {
   content: none; /* Removes the asterisk */
   font-weight: normal; /* Removes the bold styling */
 }
 nav .tags li {
-  margin-right: 2em;
+  margin-right: 1.5em;
 }
 .tags a{
   border-bottom: 3px solid var(--maincolor); 
