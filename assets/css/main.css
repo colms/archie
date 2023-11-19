@@ -276,6 +276,9 @@ svg{
   position: relative;
   -webkit-overflow-scrolling: touch;
 }
+.highlight pre code {
+  font-size: 90%;
+}
 .highlight pre code[class*="language-"] {
   -webkit-overflow-scrolling: touch;
 }
