@@ -54,8 +54,7 @@ a {
 }
 
 a:hover {
-    background-color: var(--hovercolor);
-    color: #fff;
+  border-bottom-style: dashed;
 }
 
 ul {
@@ -156,6 +155,13 @@ header {
 
 header .main {
   font-size: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+.main img {
+  height: 1em;
+  width: auto;
+  vertical-align: middle;
 }
 h1, h2, h3, h4, h5, h6 {
   font-size: 1.2rem;
@@ -256,7 +262,7 @@ svg{
   max-height: 15px;
 }
 .soc:hover{
-  color: white;
+  color: black;
 }
 .draft-label{ 
     color: var(--bordercl);
