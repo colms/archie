@@ -1,10 +1,12 @@
 <footer>
-  <div style="display:flex">
-    {{- range $index, $key := .Site.Params.Social -}}
-    <a class="soc" href="{{ $key.url }}" rel="me" title="{{ $key.name }}"><i data-feather="{{ $key.icon }}"></i></a>
-    <a class="border"></a>
-    {{- end -}}
-    <div id="footer-nav"><a href={{ "/about/" | absURL }}><img alt="About" height="20" src="/images/about.svg"></a></div>
+  <div id="footer-nav">
+    <div style="display:flex">
+      {{- range $index, $key := .Site.Params.Social -}}
+      <a class="soc" href="{{ $key.url }}" rel="me" title="{{ $key.name }}"><i data-feather="{{ $key.icon }}"></i></a>
+      <a class="border"></a>
+      {{- end -}}
+      <a href={{"/about/" | absURL }}><img alt="About" height="20" src="/images/about.svg"></a>
+    </div>
   </div>
 </footer>
 {{ if not .Site.IsServer }}

@@ -1,20 +1,22 @@
 {{ define "main" }}
-{{ if isset .Data "Term" }}
-<h1>Entries tagged - "{{ .Data.Term }}"</h1>
-{{ else }}
-
-{{ end }}
 
 <ul class="posts">
 	{{ with .Site.GetPage "/posts" }}
-	{{- range .Data.Pages -}}
+	{{- $pages := .Data.Pages -}}
+	{{- range $index, $element := $pages -}}
 	{{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
 	<li class="post">
-		<a href="{{ .RelPermalink }}">{{.Title}}</a> {{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
+		<a href="{{ .RelPermalink }}">
+			<div id="cover-image"><img src="{{ .RelPermalink }}cover.png" alt="Cover image for {{ .Title }}"></div>
+			<h2>{{ .Title }}</h2>
+		</a>
+		{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
+		{{ if not (eq (add $index 1) (len $pages)) }}<hr>{{ end }}
 	</li>
 	{{- end -}}
 	{{- end -}}
 	{{- end -}}
 </ul>
+
 {{- partial "footer.html" . -}}
 {{ end }}

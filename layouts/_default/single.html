@@ -2,6 +2,7 @@
 <main>
 	<article>
 		<div class="title">
+			<div id="cover-image"><img src="{{ .RelPermalink }}cover.png" alt="Cover image for {{ .Title }}"></div>
 			<h1 class="title">{{ .Title }}</h1>
 			<div class="meta">Published
 				{{ .Date.Format "2" }}{{ if in (slice 1 21 31) .Date.Day}}st{{ else if in (slice 2 22) .Date.Day}}nd{{ else if in (slice 3 23) .Date.Day}}rd{{ else }}th{{ end }}
