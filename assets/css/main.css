@@ -174,15 +174,15 @@ header {
 
 @media screen and (min-width: 700px) {
   .banner-title a {
-    font-size: 6vw;
+    font-size: 3.5vw;
   }
 
   .banner-image img {
-    width: 7vw;
+    width: 4.4vw;
   }
 
   .banner-content::before {
-    width: 7vw; /* Same width as the image */
+    width: 4.4vw; /* Same width as the image */
   }
 }
 
