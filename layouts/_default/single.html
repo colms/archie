@@ -8,10 +8,12 @@
 			</div>
 			{{ end }}
 			<h1 class="title">{{ .Title }}</h1>
-			<div class="meta">Published
-				{{ .Date.Format "2" }}{{ if in (slice 1 21 31) .Date.Day}}st{{ else if in (slice 2 22) .Date.Day}}nd{{ else if in (slice 3 23) .Date.Day}}rd{{ else }}th{{ end }}
-				{{ .Date.Format "January 2006" }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
-			<div class="share" aria-hidden="true">{{- partial "share.html" . -}}</div>
+			{{ if .Date }}
+				<div class="meta">Published
+					{{ .Date.Format "2" }}{{ if in (slice 1 21 31) .Date.Day}}st{{ else if in (slice 2 22) .Date.Day}}nd{{ else if in (slice 3 23) .Date.Day}}rd{{ else }}th{{ end }}
+					{{ .Date.Format "January 2006" }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+				<div class="share" aria-hidden="true">{{- partial "share.html" . -}}</div>
+			{{ end }}
 		</div>
 		{{ if isset .Params "tldr" }}
 		<div class="tldr">
