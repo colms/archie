@@ -1,0 +1,129 @@
+<div id="audio-player-container" class="audio-player-container">
+    <div class="audio-player-episode-info">
+        <div class="audio-player-podcast-logo"><img src="/images/logo_small_square.png" alt="logo"></div>
+        <div class="audio-player-title-description-container">
+            <div class="audio-player-podcast-title" id="episode-title"></div>
+            <p class="audio-player-podcast-description" id="episode-description"></p>
+        </div>
+    </div>
+    <audio id="audioElement" preload="auto">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="controls">
+        <button onclick="toBeginning()" class="control-btns"><i class="fas fa-step-backward"></i></button>
+        <button onclick="skip(-10)" class="control-btns"><i class="fas fa-backward"></i></button>
+        <button id="playPauseBtn" class="control-btns"><i class="fas fa-play"></i></button>
+        <button onclick="skip(10)" class="control-btns"><i class="fas fa-forward"></i></button>
+        <button onclick="toEnd()" class="control-btns"><i class="fas fa-step-forward"></i></button>
+    </div>
+    <div class="time-labels">
+        <span id="currentTime">00:00:00</span>
+        <span id="totalDuration">00:00:00</span>
+    </div>
+    <input type="range" id="seekbar" value="0" class="seekbar" step="any">
+    <div id="full-description-container" style="display: none;">
+        <div id="full-description"></div>
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var audioElement = document.getElementById('audioElement');
+        var playPauseBtn = document.getElementById('playPauseBtn');
+        var seekbar = document.getElementById('seekbar');
+        var currentTimeLabel = document.getElementById('currentTime');
+        var totalDurationLabel = document.getElementById('totalDuration');
+
+        function formatTime(seconds) {
+            var h = Math.floor(seconds / 3600);
+            var m = Math.floor((seconds % 3600) / 60);
+            var s = Math.floor(seconds % 60);
+            return [
+                h < 10 ? '0' + h : h,
+                m < 10 ? '0' + m : m,
+                s < 10 ? '0' + s : s
+            ].join(':');
+        }
+
+        function togglePlayPause() {
+            if (audioElement.paused || audioElement.ended) {
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                audioElement.play();
+            } else {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                audioElement.pause();
+            }
+        }
+
+        playPauseBtn.addEventListener('click', togglePlayPause);
+
+        audioElement.addEventListener('loadedmetadata', function() {
+            seekbar.max = audioElement.duration; // Set seekbar max to the audio duration
+            totalDurationLabel.textContent = formatTime(audioElement.duration);
+            seekbar.value = 0; // Reset seekbar to start
+        });
+
+        audioElement.addEventListener('timeupdate', function() {
+            // seekbar.value = (audioElement.currentTime / audioElement.duration) * 100;
+            seekbar.value = audioElement.currentTime; // Direct assignment without converting to percentage
+            currentTimeLabel.textContent = formatTime(audioElement.currentTime);
+        });
+
+        seekbar.addEventListener('input', function() {
+            audioElement.currentTime = (seekbar.value * audioElement.duration) / 100;
+        });
+
+        function skip(value) {
+            audioElement.currentTime += value;
+        }
+
+        window.toBeginning = function() {
+            audioElement.currentTime = 0;
+            audioElement.play();
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        };
+
+        window.toEnd = function() {
+            audioElement.currentTime = audioElement.duration;
+            audioElement.pause();
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        };
+
+        function updatePlayer(episodeElement) {
+            var newSrc = episodeElement.getAttribute('data-audio-src');
+            var episodeTitle = episodeElement.getAttribute('data-episode-title');
+            var episodeDescription = episodeElement.getAttribute('data-episode-description');
+
+            audioElement.src = newSrc;
+            audioElement.load();
+            document.getElementById('episode-title').textContent = episodeTitle;
+            document.getElementById('episode-description').textContent = episodeDescription;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+
+            document.getElementById('episode-description').onclick = function() {
+                var fullDescContainer = document.getElementById('full-description-container');
+                var fullDesc = document.getElementById('full-description');
+
+                if (fullDescContainer.style.display === "none") {
+                    fullDescContainer.style.display = "block";
+                    fullDesc.textContent = episodeDescription; // Here you might want to use a more detailed description if available
+                } else {
+                    fullDescContainer.style.display = "none";
+                }
+            };
+        }
+
+        document.querySelectorAll('.podcast-episode').forEach(function(episodeElement) {
+            episodeElement.addEventListener('click', function() {
+                updatePlayer(episodeElement);
+            });
+        });
+
+        var latestEpisode = document.querySelector('.podcast-episode');
+        if (latestEpisode) {
+            latestEpisode.click();
+        }
+    });
+
+</script>

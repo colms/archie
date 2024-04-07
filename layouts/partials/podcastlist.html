@@ -1,0 +1,13 @@
+<div id="podcasts-list">
+    {{ range .Site.RegularPages.ByDate.Reverse }}
+    {{ if eq .Type "podcasts" }}
+    <div class="podcast-episode"
+         data-audio-src="{{ .Params.audioFile }}"
+         data-episode-title="{{ .Title }}"
+         data-episode-description="{{ .Content | plainify }}">
+        <div class="episode-list-title">{{ .Title }}</div>
+        <div class="episode-list-date"><time>{{ dateFormat "2 January 2006" .Date }}</time></div>
+    </div>
+    {{ end }}
+    {{ end }}
+</div>

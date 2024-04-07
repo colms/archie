@@ -1,21 +1,24 @@
 /* Markdown */
 :root{
---maincolor: red;
+--maincolor: forestgreen;
 --bordercl:rebeccapurple;
 --callouctcolor:dodgerblue;
 --hovercolor:navy;
 --darkMaincolor: #50fa7b;
 }
+
 html {
   color: #232333;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Fira Sans', monospace;
   font-size: 15px;
   line-height: 1.6em;
 }
+
 body{
   display: block;
   margin: 8px;
 }
+
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -44,7 +47,7 @@ blockquote {
 }
 
 a {
-  border-bottom: 3px solid var(--maincolor);
+  border-bottom: 3px solid forestgreen;
   color: inherit;
   text-decoration: none;
 }
@@ -60,14 +63,14 @@ ul {
 ul li {
   text-indent: -2ch;
 }
-ul > li::before {
-  content: '* ';
-  font-weight: bold;
-}
+/*ul > li::before {*/
+/*  content: '* ';*/
+/*  font-weight: bold;*/
+/*}*/
 
 /* Images */
 img {
-  border: 3px solid #ececec;
+  /*border: 3px solid #ececec;*/
   max-width: 100%;
 }
 
@@ -136,25 +139,27 @@ pre code {
 header {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 1em 0;
+  justify-content: center;
+  /*margin: 3em 0;*/
   line-height: 2.5em;
+  margin-bottom: 30px;
 }
 
 header .main {
-  font-size: 1.5rem;
+  font-size: 5.5rem;
+  text-transform: uppercase;
+  padding: 0.5em 0;
 }
+
+header .main a:hover {
+  background-color: transparent; /* Removes background color on hover */
+  color: #000000; /* Change text color to black (or any contrasting color) on hover */
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-size: 1.2rem;
   margin-top: 2em;
 }
-
-h1::before { color: var(--maincolor); content: '# '; }
-h2::before { color: var(--maincolor); content: '## '; }
-h3::before { color: var(--maincolor); content: '### '; }
-h4::before { color: var(--maincolor); content: '#### '; }
-h5::before { color: var(--maincolor); content: '##### '; }
-h6::before { color: var(--maincolor); content: '###### '; }
 
 .meta {
   color: #999;
@@ -330,4 +335,258 @@ table th{
 table td{
   padding: 6px 13px;
   border: 1px solid #dfe2e5;
+}
+
+.controls {
+  display: flex;
+  /*margin-top: 10px;*/
+}
+
+.control-btns {
+  cursor: pointer;
+  border: none;
+  background-color: #FFFFFF;
+  color: #34495E;
+  font-size: 30px; /* Adjust size as needed */
+  padding: 10px 15px; /* Padding inside the buttons */
+  margin: 0 5px; /* Space between buttons */
+  border-radius: 5px; /* Rounded corners for the buttons */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  display: inline-flex; /* Use flexbox for aligning icon and text */
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Center content horizontally */
+  width: 50px; /* Fixed width */
+  height: 50px; /* Fixed height */
+}
+
+.control-btns i { /* Font Awesome icon specific styling */
+  color: #34495E; /* Dark gray color for icons */
+  margin-right: 5px; /* Space between icon and text, if any */
+}
+
+.control-btns:hover {
+  background-color: #f8f9fa; /* Slightly off-white for hover background */
+  color: #000000; /* Darker color for text and icon on hover */
+}
+
+.control-btns:active {
+  background-color: #e9ecef; /* Even lighter gray for the active state */
+  color: #20ff38; /* Almost black for contrast on active */
+}
+
+.control-btns:hover i, .control-btns:active i {
+  color: inherit; /* Ensures icons inherit the same color changes as the text */
+}
+
+/*.seekbar {*/
+/*  -webkit-appearance: none; !* Remove default styling *!*/
+/*  width: 100%;*/
+/*  margin: 10px 0;*/
+/*  cursor: pointer;*/
+/*  background-color: forestgreen;*/
+/*}*/
+
+/*.seekbar::-webkit-slider-thumb {*/
+/*  -webkit-appearance: none; !* Remove default styling *!*/
+/*  appearance: none;*/
+/*  width: 25px; !* Set a specific size for the thumb *!*/
+/*  height: 25px;*/
+/*  background: forestgreen; !* Your desired color *!*/
+/*  cursor: pointer; !* Make it clear the thumb is draggable *!*/
+/*  border-radius: 50%; !* Optional: if you want a circular thumb *!*/
+/*}*/
+
+/*.seekbar::-moz-range-thumb {*/
+/*  width: 25px;*/
+/*  height: 25px;*/
+/*  background: forestgreen;*/
+/*  cursor: pointer;*/
+/*  border-radius: 50%;*/
+/*}*/
+
+/*!* Styles for the slider (thumb) for IE and Edge *!*/
+/*.seekbar::-ms-thumb {*/
+/*  width: 25px;*/
+/*  height: 25px;*/
+/*  background: forestgreen;*/
+/*  cursor: pointer;*/
+/*  border-radius: 50%;*/
+/*}*/
+
+
+
+
+
+
+
+
+input[type=range]{
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: forestgreen;
+  margin-top: -4px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+
+
+
+
+
+
+
+.time-labels {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.time-labels span {
+  color: #34495E; /* Dark gray color to match your control buttons */
+}
+
+.podcast-episode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.episode-list-title {
+  /* Styling for the title */
+  flex: 1; /* Allows the title to grow and fill available space, pushing the date to the right */
+  text-align: left;
+  white-space: nowrap; /* Prevents text from wrapping to a new line */
+  overflow: hidden; /* Ensures that the text is clipped if it overflows the element's content area */
+  text-overflow: ellipsis; /* Renders an ellipsis (...) to represent clipped text */
+  cursor: pointer;
+}
+
+.episode-list-date {
+  /* Styling for the date */
+  text-align: right;
+  white-space: nowrap; /* Prevents the date from wrapping */
+  margin-left: 16px; /* Adds some space between the title and the date */
+  flex-shrink: 0; /* Prevents the date from shrinking if there is not enough space */
+}
+
+.audio-player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  width: 100%; /* Ensure this container is full width */
+  max-width: 800px; /* Adjust this as needed */
+  /*border: 5px solid blue; !* Specify border style and color *!*/
+}
+
+.audio-player-episode-info {
+  display: flex;
+  align-items: flex-start; /* Adjust alignment as needed */
+  /*margin-bottom: 15px;*/
+  width: 100%; /* Ensure the container spans the full width */
+  /*border: 5px solid green; !* Specify border style and color *!*/
+}
+
+.audio-player-podcast-logo img {
+  width: 100px; /* Adjust based on your logo size */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Space between logo and text */
+  flex: 0 0 auto; /* Do not grow, do not shrink, initial basis auto */
+  min-width: 100px;
+  /*border: 5px solid pink; !* Specify border style and color *!*/
+}
+
+.audio-player-title-description-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Allow this container to grow and fill the remaining space */
+  max-width: 670px;
+  /*border: 5px solid orange; !* Specify border style and color *!*/
+}
+
+.audio-player-podcast-title {
+  font-weight: bold;
+  margin-bottom: 5px; /* Space between title and description */
+  margin-top: 5px;
+  font-size: 2em;
+  line-height: 1.2;
+  /*border: 5px solid purple; !* Specify border style and color *!*/
+}
+
+.audio-player-podcast-description {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer; /* Indicates it's clickable */
+  margin-bottom: 10px; /* Space below the short description */
+}
+
+#podcasts-list {
+  margin: 20px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.podcast-feeds {
+  display: flex;          /* Use flexbox for layout */
+  justify-content: center; /* Horizontally center flex items */
+  align-items: center;    /* Vertically center flex items */
+  /*margin:10px;*/
+}
+
+.podcast-feeds ul {
+  list-style: none;       /* Remove default list styles */
+  padding: 0;            /* Remove default padding */
+  margin: 0;             /* Remove default margins */
+  display: flex;          /* Use flexbox for layout */
+  justify-content: center; /* Horizontally center flex items */
+  align-items: center;    /* Vertically center flex items */
+}
+
+.podcast-feeds li {
+  margin: 0 10px;        /* Add horizontal space between list items */
+}
+
+.podcast-feeds img {
+  display: block;        /* Images are inline by default, change to block to enable margin centering */
+  max-width: 100%;       /* Make images responsive */
+  width: 40px;
+  height: auto;          /* Maintain aspect ratio */
+}
+
+#full-description-container {
+  overflow-y: auto;
+  max-height: 200px;
+  width: 100%;
+  /*border: 1px solid #ccc;*/
+  margin-top: 10px;
+}
+
+#full-description {
+  /*padding: 10px;*/
 }
