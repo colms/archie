@@ -1,7 +1,7 @@
 /* Markdown */
 :root{
 --maincolor: forestgreen;
---bordercl:rebeccapurple;
+--bordercl:forestgreen;
 --callouctcolor:dodgerblue;
 --hovercolor:navy;
 --darkMaincolor: #50fa7b;
@@ -35,7 +35,7 @@ p {
 
 hr {
   border: 0;
-  border-top: 3px dotted var(--bordercl);
+  border-top: 30px dashed var(--bordercl);
   margin: 1em 0;
 }
 
@@ -170,9 +170,9 @@ h1, h2, h3, h4, h5, h6 {
 footer {
   display: flex;
   align-items: center;
-  border-top: 0.4rem dotted var(--bordercl);
-  padding: 2rem 0rem;
-  margin-top: 2rem;
+  border-top: 3px solid var(--bordercl);
+  margin: 20px;
+  width: 100%;
 }
 .soc {
   display: flex;
@@ -589,4 +589,21 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 #full-description {
   /*padding: 10px;*/
+}
+
+#footer-legal {
+  display: flex;
+  justify-content: space-between; /* This should keep items on opposite ends */
+  align-items: center; /* Vertically center align the items */
+  width: 100%; /* Ensure the container spans the entire width */
+  margin-top: 2rem;
+}
+
+#footer-legal > div {
+  /* Remove flex-grow to prevent the divs from trying to fill available space */
+}
+
+.privacy-policy {
+  /* This should not be necessary with justify-content: space-between, but let's keep it for now */
+  margin-left: auto; /* Ensure it pushes to the right */
 }
