@@ -9,12 +9,15 @@
     <audio id="audioElement" preload="auto">
         Your browser does not support the audio element.
     </audio>
-    <div class="controls">
-        <button onclick="toBeginning()" class="control-btns"><i class="fas fa-step-backward"></i></button>
-        <button onclick="skip(-10)" class="control-btns"><i class="fas fa-backward"></i></button>
-        <button id="playPauseBtn" class="control-btns"><i class="fas fa-play"></i></button>
-        <button onclick="skip(10)" class="control-btns"><i class="fas fa-forward"></i></button>
-        <button onclick="toEnd()" class="control-btns"><i class="fas fa-step-forward"></i></button>
+    <div class="control-wrapper">
+        <button id="downloadBtn" class="control-btns"><i class="fas fa-download"></i></button>
+        <div class="controls">
+            <button onclick="toBeginning()" class="control-btns"><i class="fas fa-step-backward"></i></button>
+            <button onclick="skip(-10)" class="control-btns"><i class="fas fa-backward"></i></button>
+            <button id="playPauseBtn" class="control-btns"><i class="fas fa-play"></i></button>
+            <button onclick="skip(10)" class="control-btns"><i class="fas fa-forward"></i></button>
+            <button onclick="toEnd()" class="control-btns"><i class="fas fa-step-forward"></i></button>
+        </div>
     </div>
     <div class="time-labels">
         <span id="currentTime">00:00:00</span>
@@ -101,6 +104,11 @@
             document.getElementById('episode-description').textContent = episodeDescription;
             playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
 
+            var downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.onclick = function() {
+                downloadFile(newSrc);
+            };
+
             document.getElementById('episode-description').onclick = function() {
                 var fullDescContainer = document.getElementById('full-description-container');
                 var fullDesc = document.getElementById('full-description');
@@ -112,6 +120,15 @@
                     fullDescContainer.style.display = "none";
                 }
             };
+        }
+
+        function downloadFile(url) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = url.split('/').pop();  // This attempts to extract the file name from the URL
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }
 
         document.querySelectorAll('.podcast-episode').forEach(function(episodeElement) {
