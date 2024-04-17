@@ -11,25 +11,3 @@
 		</div>
 	</body>
 </html>
-<!--{{ define "main" }}-->
-
-<!--<ul class="posts">-->
-<!--	{{ with .Site.GetPage "/posts" }}-->
-<!--	{{- $pages := .Data.Pages -}}-->
-<!--	{{- range $index, $element := $pages -}}-->
-<!--	{{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}-->
-<!--	<li class="post">-->
-<!--		<a href="{{ .RelPermalink }}">-->
-<!--			<div id="cover-image"><img src="{{ .RelPermalink }}cover.png" alt="Cover image for {{ .Title }}"></div>-->
-<!--			<h2>{{ .Title }}</h2>-->
-<!--		</a>-->
-<!--		{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}-->
-<!--		{{ if not (eq (add $index 1) (len $pages)) }}<hr>{{ end }}-->
-<!--	</li>-->
-<!--	{{- end -}}-->
-<!--	{{- end -}}-->
-<!--	{{- end -}}-->
-<!--</ul>-->
-
-<!--{{- partial "footer.html" . -}}-->
-<!--{{ end }}-->

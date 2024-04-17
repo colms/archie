@@ -127,6 +127,12 @@ pre code {
   word-wrap: break-word;
 }
 
+@media (max-width: 600px) {
+  .content {
+    max-width: 550px;
+  }
+}
+
 /* Header */
 header {
   display: flex;
@@ -134,13 +140,25 @@ header {
   justify-content: center;
   /*margin: 3em 0;*/
   line-height: 2.5em;
-  margin-bottom: 30px;
+  margin-bottom: 1em;
+}
+
+@media (max-width: 600px) {
+  header {
+    margin-bottom: 0.5em;
+  }
 }
 
 header .main {
   font-size: 5.5rem;
   text-transform: uppercase;
   padding: 0.5em 0;
+}
+
+@media (max-width: 600px) {
+  header .main {
+    font-size: 2.5rem; /* Smaller font size on small screens */
+  }
 }
 
 header .main a:hover {
@@ -166,6 +184,13 @@ footer {
   margin: 20px;
   width: 100%;
 }
+
+@media (max-width: 600px) {
+  footer {
+    margin: 0px;
+  }
+}
+
 .soc {
   display: flex;
   align-items: center;
@@ -342,92 +367,63 @@ table td{
   justify-content: center; /* Center these controls */
   align-items: center;
   width: 100%; /* Make sure it spans the full width */
+  /*margin: auto;*/
 }
 
-#downloadBtn {
+#download-button {
   position: absolute; /* Position it absolutely to remove from normal flow */
   left: 0; /* Align it to the left */
 }
 
-.control-btns {
+#share-button {
+  position: absolute; /* Position it absolutely to remove from normal flow */
+  right: 0; /* Align it to the right */
+}
+
+.control-buttons {
   cursor: pointer;
   border: none;
   background-color: #FFFFFF;
   color: #34495E;
-  font-size: 30px; /* Adjust size as needed */
-  padding: 10px 15px; /* Padding inside the buttons */
+  font-size: 2em; /* Adjust size as needed */
   margin: 0 5px; /* Space between buttons */
   border-radius: 5px; /* Rounded corners for the buttons */
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
   display: inline-flex; /* Use flexbox for aligning icon and text */
   align-items: center; /* Align items vertically */
   justify-content: center; /* Center content horizontally */
-  width: 50px; /* Fixed width */
-  height: 50px; /* Fixed height */
 }
 
-.control-btns i { /* Font Awesome icon specific styling */
+.control-buttons i { /* Font Awesome icon specific styling */
   color: #34495E; /* Dark gray color for icons */
   margin-right: 5px; /* Space between icon and text, if any */
 }
 
-.control-btns:hover {
+@media screen and (max-width: 600px) {
+  .control-buttons {
+    font-size: 2em; /* Adjust size as needed */
+    /*margin: 0 0px; !* Space between buttons *!*/
+    /*margin-right: 0.2em;*/
+  }
+
+  .control-buttons i { /* Font Awesome icon specific styling */
+    margin-right: 0px; /* Space between icon and text, if any */
+  }
+}
+
+.control-buttons:hover {
   background-color: #f8f9fa; /* Slightly off-white for hover background */
   color: #000000; /* Darker color for text and icon on hover */
 }
 
-.control-btns:active {
+.control-buttons:active {
   background-color: #e9ecef; /* Even lighter gray for the active state */
   color: #20ff38; /* Almost black for contrast on active */
 }
 
-.control-btns:hover i, .control-btns:active i {
+.control-buttons:hover i, .control-buttons:active i {
   color: inherit; /* Ensures icons inherit the same color changes as the text */
 }
-
-
-
-/*.seekbar {*/
-/*  -webkit-appearance: none; !* Remove default styling *!*/
-/*  width: 100%;*/
-/*  margin: 10px 0;*/
-/*  cursor: pointer;*/
-/*  background-color: forestgreen;*/
-/*}*/
-
-/*.seekbar::-webkit-slider-thumb {*/
-/*  -webkit-appearance: none; !* Remove default styling *!*/
-/*  appearance: none;*/
-/*  width: 25px; !* Set a specific size for the thumb *!*/
-/*  height: 25px;*/
-/*  background: forestgreen; !* Your desired color *!*/
-/*  cursor: pointer; !* Make it clear the thumb is draggable *!*/
-/*  border-radius: 50%; !* Optional: if you want a circular thumb *!*/
-/*}*/
-
-/*.seekbar::-moz-range-thumb {*/
-/*  width: 25px;*/
-/*  height: 25px;*/
-/*  background: forestgreen;*/
-/*  cursor: pointer;*/
-/*  border-radius: 50%;*/
-/*}*/
-
-/*!* Styles for the slider (thumb) for IE and Edge *!*/
-/*.seekbar::-ms-thumb {*/
-/*  width: 25px;*/
-/*  height: 25px;*/
-/*  background: forestgreen;*/
-/*  cursor: pointer;*/
-/*  border-radius: 50%;*/
-/*}*/
-
-
-
-
-
-
-
 
 input[type=range]{
   -webkit-appearance: none;
@@ -460,9 +456,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   background: #ccc;
 }
 
-
-
-
 .time-labels {
   width: 100%;
   display: flex;
@@ -478,24 +471,59 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 0.25em;
+}
+
+.podcast-episode:not(:last-child) {
+  border-bottom: forestgreen solid 1px;
 }
 
 .episode-list-title {
-  /* Styling for the title */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* This should be set to normal to allow wrapping */
   flex: 1; /* Allows the title to grow and fill available space, pushing the date to the right */
   text-align: left;
-  white-space: nowrap; /* Prevents text from wrapping to a new line */
-  overflow: hidden; /* Ensures that the text is clipped if it overflows the element's content area */
-  text-overflow: ellipsis; /* Renders an ellipsis (...) to represent clipped text */
   cursor: pointer;
+  margin-bottom: 5px; /* Ensure some spacing between the title and date */
+  line-height: 1.5em; /* Adjust line height as necessary for visual appeal */
 }
 
 .episode-list-date {
-  /* Styling for the date */
   text-align: right;
   white-space: nowrap; /* Prevents the date from wrapping */
   margin-left: 16px; /* Adds some space between the title and the date */
   flex-shrink: 0; /* Prevents the date from shrinking if there is not enough space */
+}
+
+@media (max-width: 600px) {
+  .podcast-episode {
+    flex-direction: column; /* Stack the title and date vertically on all sizes */
+    align-items: start; /* Align items to the start */
+  }
+
+  .podcast-episode:not(:last-child) {
+    margin-bottom: 0.2px; /* Adds space only between episodes */
+  }
+
+  .episode-list-title {
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    margin-bottom: 0px; /* Adjust spacing as needed */
+    height: 3em; /* Adjust based on your font size and desired line height */
+    line-height: 1.5em; /* Adjust this to manage the spacing between lines */
+    -webkit-line-clamp: 2;
+  }
+
+  .episode-list-date {
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 0px;
+    font-size: 0.75em;
+  }
 }
 
 .audio-player-container {
@@ -503,65 +531,86 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
   margin: 20px;
-  width: 100%; /* Ensure this container is full width */
-  max-width: 800px; /* Adjust this as needed */
-  /*border: 5px solid blue; !* Specify border style and color *!*/
 }
 
 .audio-player-episode-info {
   display: flex;
-  align-items: flex-start; /* Adjust alignment as needed */
-  /*margin-bottom: 15px;*/
-  width: 100%; /* Ensure the container spans the full width */
-  /*border: 5px solid green; !* Specify border style and color *!*/
-}
-
-.audio-player-podcast-logo img {
-  width: 100px; /* Adjust based on your logo size */
-  height: auto; /* Maintain aspect ratio */
-  margin-right: 10px; /* Space between logo and text */
-  flex: 0 0 auto; /* Do not grow, do not shrink, initial basis auto */
-  min-width: 100px;
-  /*border: 5px solid pink; !* Specify border style and color *!*/
+  flex-direction: column;
+  width: 100%;
 }
 
 .audio-player-title-description-container {
   display: flex;
-  flex-direction: column;
-  flex: 1; /* Allow this container to grow and fill the remaining space */
-  max-width: 670px;
-  /*border: 5px solid orange; !* Specify border style and color *!*/
+  align-items: center;
+  width: 100%;
+}
+
+.audio-player-podcast-logo {
+  flex-shrink: 0; /* Prevent the logo from shrinking */
+}
+
+.audio-player-podcast-logo img {
+  width: 100px;
+  height: auto;
 }
 
 .audio-player-podcast-title {
+  flex-grow: 1; /* Allow the title to take up remaining space */
+  margin-left: 20px; /* Space between logo and title */
   font-weight: bold;
-  margin-bottom: 5px; /* Space between title and description */
-  margin-top: 5px;
   font-size: 2em;
-  line-height: 1.2;
-  /*border: 5px solid purple; !* Specify border style and color *!*/
+  line-height: 1.2em;
+  text-align: center;
 }
 
 .audio-player-podcast-description {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  cursor: pointer; /* Indicates it's clickable */
-  margin-bottom: 10px; /* Space below the short description */
+  width: 100%; /* Full width to span the entire container */
+  padding-top: 10px; /* Space between title row and description */
+  font-size: 1em;
+}
+
+@media (max-width: 600px) {
+  .audio-player-title-description-container {
+    flex-direction: column; /* Stack the logo and title vertically */
+    align-items: center; /* Center-align the items within the container */
+  }
+
+  .audio-player-container {
+    max-width: 550px;
+    margin: 1em 0px 0px;
+  }
+
+  .audio-player-podcast-logo img {
+    max-width: 100px;
+  }
+
+  .audio-player-podcast-title {
+    font-size: 1.5rem; /* Smaller font size on small screens */
+    margin: 0px;
+  }
 }
 
 #podcasts-list {
-  margin: 20px;
+  margin-top: 2em;
+  margin-left: 20px;
   width: 100%;
-  max-width: 1000px;
+  border-top: 3px solid var(--bordercl);
+  padding-top: 1em;
+}
+
+@media (max-width: 600px) {
+  #podcasts-list {
+    margin: 1em 0px 0px;
+    padding-top: 0.5em;
+  }
 }
 
 .podcast-feeds {
   display: flex;          /* Use flexbox for layout */
   justify-content: center; /* Horizontally center flex items */
   align-items: center;    /* Vertically center flex items */
-  /*margin:10px;*/
 }
 
 .podcast-feeds ul {
@@ -584,16 +633,17 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   height: auto;          /* Maintain aspect ratio */
 }
 
+@media (max-width: 600px) {
+  .podcast-feeds img {
+    width: 35px;
+  }
+}
+
 #full-description-container {
   overflow-y: auto;
   max-height: 200px;
   width: 100%;
-  /*border: 1px solid #ccc;*/
   margin-top: 10px;
-}
-
-#full-description {
-  /*padding: 10px;*/
 }
 
 #footer-legal {
@@ -608,7 +658,12 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   /* Remove flex-grow to prevent the divs from trying to fill available space */
 }
 
+.copyright {
+  font-size: 0.8em;
+}
+
 .privacy-policy {
+  font-size: 0.8em;
   /* This should not be necessary with justify-content: space-between, but let's keep it for now */
   margin-left: auto; /* Ensure it pushes to the right */
 }
