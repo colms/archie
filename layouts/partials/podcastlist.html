@@ -4,7 +4,8 @@
     <div class="podcast-episode"
          data-audio-src="{{ .Params.audioFile }}"
          data-episode-title="{{ .Title }}"
-         data-episode-description="{{ .Content | plainify }}">
+         data-episode-description="{{ .Content | plainify }}"
+         data-episode-slug="{{ .RelPermalink }}">
         <div class="episode-list-title">{{ .Title }}</div>
         <div class="episode-list-date"><time>{{ dateFormat "2 January 2006" .Date }}</time></div>
     </div>
