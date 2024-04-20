@@ -173,6 +173,7 @@ h1, h2, h3, h4, h5, h6 {
 .meta {
   color: #999;
   letter-spacing: -0.5px;
+  font-size: 0.75em;
 }
 
 /* Footer */
@@ -204,19 +205,21 @@ footer {
 }
 
 /* Common */
-.title h1 {
-  margin-bottom: 0;
-}
-
 time {
   color: grey;
 }
 
-/* Posts */
-article .title {
-  margin-bottom: 1em;
+.title h1 {
+  margin-bottom: 0;
 }
 
+/* Posts */
+article .title {
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
+  line-height: 1em;
+  margin-top: 0.5em;
+}
 
 /* Callout */
 .callout {
