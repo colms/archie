@@ -101,7 +101,7 @@
             var episodeSlug = episodeElement.getAttribute('data-episode-slug');
 
             audioElement.src = "{{ .Site.BaseURL }}" + newSrc;
-            console.log("Updating player to new source: ", newSrc); // Log the new source
+            console.log("Updating player to new full url source: ", newSrc); // Log the new source
             audioElement.load();
             audioElement.play().catch(e => console.error("Error auto-playing after load:", e));
             document.getElementById('episode-title').textContent = episodeTitle;
