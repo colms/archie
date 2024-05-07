@@ -18,7 +18,6 @@
             <button onclick="skip(10)" class="control-buttons"><i class="fas fa-forward"></i></button>
             <button onclick="toEnd()" class="control-buttons"><i class="fas fa-step-forward"></i></button>
         </div>
-        <button id="share-button" class="control-buttons"><i class="fas fa-share-alt"></i></button>
     </div>
     <div class="time-labels">
         <span id="currentTime">00:00:00</span>
@@ -78,8 +77,11 @@
             audioElement.currentTime = (seekbar.value * audioElement.duration) / 100;
         });
 
-        function skip(value) {
-            audioElement.currentTime += value;
+        window.skip = function(value) {
+            var newTime = audioElement.currentTime + value;
+            if (newTime < 0) newTime = 0;
+            if (newTime > audioElement.duration) newTime = audioElement.duration;
+            audioElement.currentTime = newTime;
         }
 
         window.toBeginning = function() {
@@ -100,10 +102,8 @@
             var episodeDescription = episodeElement.getAttribute('data-episode-description');
             var episodeSlug = episodeElement.getAttribute('data-episode-slug');
 
-            audioElement.src = "{{ .Site.BaseURL }}" + newSrc;
-            console.log("Updating player to new full url source: ", audioElement.src); // Log the new source
+            audioElement.src = "{{ .Site.Params.bucketBaseURL }}" + newSrc;
             audioElement.load();
-            // audioElement.play().catch(e => console.error("Error auto-playing after load:", e));
             document.getElementById('episode-title').textContent = episodeTitle;
             document.getElementById('episode-description').textContent = episodeDescription;
             playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';

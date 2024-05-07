@@ -39,3 +39,14 @@
        url('../fonts/ibm-plex-mono-v6-latin-500italic.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../fonts/ibm-plex-mono-v6-latin-500italic.svg#IBMPlexMono') format('svg'); /* Legacy iOS */
 }
+/* book-antiqua-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Book Antiqua';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/book-antiqua-regular.eot'); /* IE9 Compat Modes */
+    src: local('Book Antiqua Regular'), local('BookAntiqua-Regular'),
+    url('../fonts/book-antiqua-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/book-antiqua-regular.svg#BookAntiqua') format('svg'); /* Legacy iOS */
+}
