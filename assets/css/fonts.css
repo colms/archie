@@ -48,5 +48,8 @@
     src: url('../fonts/book-antiqua-regular.eot'); /* IE9 Compat Modes */
     src: local('Book Antiqua Regular'), local('BookAntiqua-Regular'),
     url('../fonts/book-antiqua-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/book-antiqua-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/book-antiqua-regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/book-antiqua-regular.ttf') format('truetype'), /* Safari, Android, iOS */
     url('../fonts/book-antiqua-regular.svg#BookAntiqua') format('svg'); /* Legacy iOS */
 }
