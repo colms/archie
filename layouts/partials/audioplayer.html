@@ -103,6 +103,7 @@
             var episodeSlug = episodeElement.getAttribute('data-episode-slug');
 
             audioElement.src = "{{ .Site.Params.bucketBaseURL }}" + newSrc;
+            console.log('updating player audioElement.src: ' + audioElement.src);
             audioElement.load();
             document.getElementById('episode-title').textContent = episodeTitle;
             document.getElementById('episode-description').textContent = episodeDescription;
@@ -110,6 +111,7 @@
 
             var downloadButton = document.getElementById('download-button');
             downloadButton.onclick = function() {
+                console.log('downloading url:' + audioElement.src);
                 downloadFile(audioElement.src);
             };
             episodeDescriptionLink.href = "{{ .Site.BaseURL }}" + episodeSlug.substring(1);
@@ -117,8 +119,11 @@
 
         function downloadFile(url) {
             const a = document.createElement('a');
+            const filename = url.split('/').pop(); // Correctly extract the file name from the URL
+            console.log(url);
+            console.log(filename);
             a.href = url;
-            a.download = url;
+            a.download = filename || 'default_download'; // Use logical OR to provide a default filename if necessary
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
