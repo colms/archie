@@ -110,7 +110,7 @@
 
             var downloadButton = document.getElementById('download-button');
             downloadButton.onclick = function() {
-                downloadFile(newSrc);
+                downloadFile(audioElement.src);
             };
             episodeDescriptionLink.href = "{{ .Site.BaseURL }}" + episodeSlug.substring(1);
         }
@@ -118,7 +118,7 @@
         function downloadFile(url) {
             const a = document.createElement('a');
             a.href = url;
-            a.download = url.split('/').pop();  // This attempts to extract the file name from the URL
+            a.download = url;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
