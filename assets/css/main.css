@@ -149,7 +149,8 @@ header {
 }
 
 header .main {
-  font-family: 'Book Antiqua', sans-serif;
+  font-family: 'Book Antiqua';
+  font-weight: bold;
   font-size: 5.5rem;
   padding: 0.5em 0;
 }
