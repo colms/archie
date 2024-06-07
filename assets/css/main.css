@@ -13,9 +13,10 @@ html {
   line-height: 1.6em;
 }
 
-body{
+body {
   display: block;
   margin: 8px;
+  background-color: #F2F2EC;
 }
 
 * {
@@ -46,10 +47,10 @@ blockquote {
 }
 
 a {
-  border-bottom: 3px solid #225522;
+  /*border-bottom: 3px solid #225522;*/
   color: inherit;
   text-decoration: none;
-}re
+}
 
 ul {
   list-style: none;
@@ -181,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
 footer {
   display: flex;
   align-items: center;
-  border-top: 3px solid var(--bordercl);
+  /*border-top: 3px solid var(--bordercl);*/
   width: 100%;
 }
 
@@ -385,7 +386,7 @@ table td{
 .control-buttons {
   cursor: pointer;
   border: none;
-  background-color: #FFFFFF;
+  background-color: #F2F2EC;
   color: #34495E;
   font-size: 2em; /* Adjust size as needed */
   margin: 0 5px; /* Space between buttons */
@@ -476,9 +477,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   margin-top: 0.25em;
 }
 
-.podcast-episode:not(:last-child) {
-  border-bottom: #225522 solid 1px;
-}
+/*.podcast-episode:not(:last-child) {*/
+/*  border-bottom: #225522 solid 1px;*/
+/*}*/
 
 .episode-list-title {
   display: -webkit-box;
@@ -507,7 +508,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   }
 
   .podcast-episode:not(:last-child) {
-    margin-bottom: 0.2px; /* Adds space only between episodes */
+    margin-bottom: 30px; /* Adds space only between episodes */
   }
 
   .episode-list-title {
@@ -554,7 +555,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 .audio-player-podcast-logo img {
-  width: 100px;
+  width: 300px;
   height: auto;
 }
 
@@ -601,7 +602,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 #podcasts-list {
   margin-top: 2em;
   width: 100%;
-  border-top: 3px solid var(--bordercl);
+  /*border-top: 3px solid var(--bordercl);*/
   padding-top: 0.25em;
 }
 
@@ -613,9 +614,17 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 .podcast-feeds {
+  margin-top: -5em;
   display: flex;          /* Use flexbox for layout */
   justify-content: center; /* Horizontally center flex items */
   align-items: center;    /* Vertically center flex items */
+}
+
+@media (max-width: 600px) {
+  .podcast-feeds {
+    margin-top: -2.5em;
+  }
+
 }
 
 .podcast-feeds ul {
@@ -671,4 +680,112 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   font-size: 0.8em;
   /* This should not be necessary with justify-content: space-between, but let's keep it for now */
   margin-left: auto; /* Ensure it pushes to the right */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#podcasts-list {
+  width: 100%; /* Ensures the podcast list takes up the full width of its container */
+  /*padding: 20px; !* Adds padding around the list for spacing *!*/
+}
+
+.podcast-episode {
+  display: flex; /* Enables flexbox layout for two-column design */
+  /*flex-direction: column;*/
+  /*margin-bottom: 20px; !* Adds space between podcast episodes *!*/
+  /*padding: 10px; !* Adds padding inside each episode block *!*/
+  /*background: #f5f5f5; !* Light grey background for each episode *!*/
+  /*border-radius: 8px; !* Rounded corners for the episode blocks *!*/
+}
+
+.episode-podcast-logo {
+  flex: 0 0 150px; /* Fixed width for the logo, does not grow or shrink */
+  margin-right: 20px; /* Adds spacing between the logo and the details */
+  vertical-align: center;
+}
+
+.episode-podcast-logo img {
+  width: 100%; /* Makes the logo image fill the container */
+  height: auto; /* Maintains the aspect ratio of the image */
+  /*border-radius: 8px; !* Rounded corners for the image *!*/
+}
+
+.episode-details {
+  flex: 1; /* Allows the details section to take up the remaining space */
+  display: flex;
+  flex-direction: column; /* Stacks the title, description, and links vertically */
+}
+
+.episode-list-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px; /* Adds spacing below the title */
+}
+
+.episode-list-description {
+  flex: 1; /* Allows the description to take up any remaining space */
+  margin-bottom: 10px; /* Adds spacing below the description */
+  overflow: auto; /* Adds scrollbar if the content is too long */
+}
+
+.episode-links {
+  display: flex; /* Aligns the links in a row */
+  justify-content: flex-start; /* Aligns links to the left */
+  gap: 10px; /* Adds space between each link icon */
+}
+
+.episode-links img {
+  width: 32px; /* Sets a fixed width for each link icon */
+  height: 32px; /* Sets a fixed height for each link icon */
+}
+
+@media (max-width: 600px) {
+
+  #podcasts-list {
+    margin-top: 20px;
+  }
+
+  .podcast-episode {
+    flex-direction: column; /* Stacks logo and details vertically */
+    align-items: center; /* Centers content horizontally */
+    margin-bottom: 40px; /* Adds space between podcast episodes */
+  }
+
+  .episode-podcast-logo {
+    flex: 0 0 auto; /* Adjusts size and grow/shrink behavior */
+    margin-right: 0; /* No right margin since it's centered now */
+    text-align: center; /* Ensures logo is centered */
+    width: 100%; /* Allows the logo area to take the full width if necessary */
+  }
+
+  .episode-podcast-logo img {
+    alignment: center;
+    width: 50%; /* Ensures the image fills its container */
+    height: auto; /* Maintains aspect ratio */
+  }
+
+}
+
+#preamble {
+  margin-top: 2em;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.0em;
+}
+
+@media (max-width: 600px) {
+  #preamble {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
 }

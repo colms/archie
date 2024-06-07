@@ -1,13 +1,17 @@
 <div id="podcasts-list">
     {{ range .Site.RegularPages.ByDate.Reverse }}
     {{ if eq .Type "podcasts" }}
-    <div class="podcast-episode"
-         data-audio-src="{{ .Params.audioFile }}"
-         data-episode-title="{{ .Title }}"
-         data-episode-description="{{ .Content | plainify }}"
-         data-episode-slug="{{ .RelPermalink }}">
-        <div class="episode-list-title">{{ .Title }}</div>
-        <div class="episode-list-date"><time>{{ dateFormat "2 January 2006" .Date }}</time></div>
+    <div class="podcast-episode">
+        <div class="episode-podcast-logo"><a href="{{ .Params.youtube }}"><img src="/images/logo_600_600.png" alt="logo"></a></div>
+        <div class="episode-details">
+            <a href="{{ .Params.youtube }}"><div class="episode-list-title">{{ .Title }}</div></a>
+            <a href="{{ .Params.youtube }}"><div class="episode-list-description">{{ .Params.summary }}</div></a>
+<!--            <div class="episode-links">-->
+<!--                <a href="{{ .Params.apple }}"><img src="/images/feeds/apple.png" alt="Apple"/></a>-->
+<!--                <a href="{{ .Params.spotify }}"><img src="/images/feeds/spotify.png" alt="Spotify"/></a>-->
+<!--                <a href="{{ .Params.youtube }}"><img src="/images/feeds/youtube.png" alt="Youtube"/></a>-->
+<!--            </div>-->
+        </div>
     </div>
     {{ end }}
     {{ end }}

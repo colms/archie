@@ -1,8 +1,8 @@
 <div class="podcast-feeds">
     <ul>
-        <li><a href="{{ .Site.BaseURL }}index.xml"><img src="/images/feeds/rss.png" alt="RSS" /></a></li>
-        <li><img src="/images/feeds/apple.png" alt="Apple" /></li>
-        <li><img src="/images/feeds/spotify.png" alt="Spotify" /></li>
-        <li><a href="https://www.youtube.com/channel/UCZeSJ4bJGKQJRuRRKEvUI8Q"><img src="/images/feeds/youtube.png" alt="Youtube" /></a></li>
+        <li><a href="{{ .Site.Params.rssFeedUrl }}"><img src="/images/feeds/rss.png" alt="RSS" /></a></li>
+        <li><a href="{{ .Site.Params.applePodcastUrl }}"><img src="/images/feeds/apple.png" alt="Apple" /></a></li>
+        <li><a href="{{ .Site.Params.spotifyPodcastUrl }}"><img src="/images/feeds/spotify.png" alt="Spotify" /></a></li>
+        <li><a href="{{ .Site.Params.youtubeChannelUrl }}"><img src="/images/feeds/youtube.png" alt="Youtube" /></a></li>
     </ul>
 </div>
